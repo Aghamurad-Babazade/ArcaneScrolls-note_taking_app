@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Add Note - ArcaneScrolls</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(white, lightblue) no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            margin-top: 20px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .card-header {
+            background-color: #6a1b9a; /* Deep Purple */
+            color: #ffffff;
+            border-bottom: none;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .btn-primary {
+            background-color: #6a1b9a; /* Deep Purple */
+            border-color: #6a1b9a; /* Deep Purple */
+        }
+
+        .btn-primary:hover {
+            background-color: #4a148c; /* Darker Deep Purple */
+            border-color: #4a148c; /* Darker Deep Purple */
+        }
+
+        .btn-outline-secondary {
+            color: white;
+            border-color: white;
+        }
+
+        .btn-outline-secondary:hover {
+            color: #6a1b9a;
+            background-color: white;
+            border-color: gray;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h1 class="card-title">Add Note</h1>
+            <div>
+                <form method="post" th:action="@{/logout}">
+
+                    <a class="btn btn-outline-secondary mr-2" th:href="@{/notes}">
+                        <i class="fas fa-arrow-left"></i> Back to Notes
+                    </a>
+
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-sign-out-alt"></i> Sign Out
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="card-body">
+            <form action="#" method="post" th:action="@{/addNote}">
+                <div class="form-group">
+                    <label for="headline">Headline:</label>
+                    <input class="form-control" id="headline" name="headline" required type="text">
+                </div>
+                <div class="form-group">
+                    <label for="note">Note Content:</label>
+                    <textarea class="form-control" id="note" name="note" required rows="4"></textarea>
+                </div>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-save"></i> Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

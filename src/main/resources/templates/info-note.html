@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Information - ArcaneScrolls</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(white, lightblue) no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            margin-top: 20px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .card-header {
+            background-color: #6a1b9a; /* Deep Purple */
+            color: #ffffff;
+            border-bottom: none;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .btn-outline-secondary {
+            color: white;
+            border-color: white;
+        }
+
+        .btn-outline-secondary:hover {
+            color: #6a1b9a;
+            background-color: white;
+            border-color: gray;
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h1 class="card-title">Note Information</h1>
+            <div>
+                <form method="post" th:action="@{/logout}">
+
+                    <a class="btn btn-outline-secondary mr-2" th:href="@{/notes}">
+                        <i class="fas fa-arrow-left"></i> Back to Notes
+                    </a>
+
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-sign-out-alt"></i> Sign Out
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="card-body">
+            <h2 class="card-subtitle mb-4" th:text="${note.headline}">Information about the note: </h2>
+
+            <div class="mb-3">
+                <strong>Word Count:</strong> <span th:text="${#strings.setSplit(note.note, ' ').size()}"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Character Count:</strong> <span th:text="${note.note.length()}"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Created At:</strong> <span th:text="${note.createdAtFormatted}"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Updated At:</strong> <span th:text="${note.updatedAtFormatted}"></span>
+            </div>
+
+            <!-- Add any other options or information you want to display -->
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

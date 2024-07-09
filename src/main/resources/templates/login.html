@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Login - ArcaneScrolls</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(white, lightblue) no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            margin-top: 50px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .card-header {
+            background-color: #6a1b9a; /* Deep Purple */
+            color: #ffffff;
+            border-bottom: none;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .form-group label {
+            color: #6a1b9a;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #6a1b9a;
+            border-color: #6a1b9a;
+        }
+
+        .btn-primary:hover {
+            background-color: #4a0072;
+            border-color: #4a0072;
+        }
+
+        .btn-secondary {
+            background-color: #ffffff;
+            color: #6a1b9a;
+            border-color: #6a1b9a;
+        }
+
+        .btn-secondary:hover {
+            background-color: #6a1b9a;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">ArcaneScrolls Login</h1>
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post" th:action="@{/login}">
+                        <div class="form-group">
+                            <label for="username_or_email">Username or Email:</label>
+                            <input class="form-control" id="username_or_email" name="username_or_email" required
+                                   type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <div class="input-group">
+                                <input class="form-control" id="password" name="password" required type="password">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" id="togglePassword" type="button">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block" type="submit">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </form>
+                    <hr>
+                    <form class="text-center mt-3" method="get" th:action="@{/registration}">
+                        <button class="btn btn-secondary" type="submit">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Script to toggle password visibility -->
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordField = document.getElementById('password');
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        this.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+</script>
+
+</body>
+</html>
