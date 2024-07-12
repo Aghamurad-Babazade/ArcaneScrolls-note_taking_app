@@ -1,10 +1,7 @@
-FROM adoptopenjdk:11-jre-hotspot
+FROM openjdk:17
 
 WORKDIR /app
 
-COPY target/ArcaneScrolls-0.0.1-SNAPSHOT.jar /app/ArcaneScrolls.jar
+COPY target/ArcaneScrolls-0.1.0-Arcane.jar app.jar
 
-EXPOSE 8080
-
-CMD ["java", "-jar", "/app/ArcaneScrolls.jar"]
-
+ENTRYPOINT ["java", "-jar", "app.jar"]

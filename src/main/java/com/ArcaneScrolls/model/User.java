@@ -24,7 +24,7 @@ public class User {
     private String email;
 
     @Lob
-    @Column(name = "encryptionKey", columnDefinition = "VARBINARY(256)")
+    @Column(name = "encryption_key", columnDefinition = "VARBINARY(256)")
     private byte[] encryptionKey;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
