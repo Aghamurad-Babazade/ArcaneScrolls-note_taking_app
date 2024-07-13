@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>ArcaneScrolls</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(white, lightblue); /* Light Cyan */
+            font-family: 'Arial', sans-serif;
+            background-size: cover;
+
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+        }
+
+        .card {
+            margin-top: 0;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff; /* White */
+            border-radius: 15px;
+
+        }
+
+        .card-header {
+            background-color: #6a1b9a; /* Deep Purple */
+            color: #ffffff;
+            border-bottom: none;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #4a0072; /* Dark Purple */
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-outline-secondary {
+            border-color: #ffffff; /* White */
+            color: #ffffff; /* White */
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #ffffff;
+            color: #6a1b9a; /* Deep Purple */
+        }
+
+        .btn-outline-primary {
+            border-color: #6a1b9a; /* Deep Purple */
+            color: #6a1b9a;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #6a1b9a;
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background-color: #0288d1; /* Light Blue */
+            border-color: #0288d1;
+        }
+
+        .btn-primary:hover {
+            background-color: #0277bd; /* Darker Blue */
+            border-color: #0277bd;
+        }
+
+        .card-footer {
+            background-color: #e0f2f1; /* Very Light Cyan */
+            border-top: 1px solid #ddd;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .note-card {
+            margin-bottom: 20px;
+        }
+
+        .note-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h1 class="card-title">ArcaneScrolls</h1>
+
+            <form method="post" th:action="@{/logout}">
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="fas fa-sign-out-alt"></i> Sign Out
+                </button>
+            </form>
+        </div>
+        <div class="card-body">
+            <h2 class="card-subtitle mb-4">Welcome, <span th:text="${username}"></span>!</h2>
+            <!-- Search form -->
+            <form class="mb-4" method="get" th:action="@{/search}">
+                <div class="input-group">
+                    <input class="form-control" name="keyword" placeholder="Search notes..." th:value="${keyword}"
+                           type="text">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="mt-4 text-center" id="add-div">
+                <a class="btn btn-primary" th:href="@{/addNote}">
+                    <i class="fas fa-plus"></i> Add Note
+                </a>
+            </div>
+
+            <p class="text-right">Total Notes: <span th:text="${#lists.size(notes)}"></span></p>
+
+            <div class="note-grid">
+
+                <div class="note-card" th:each="note : ${notes}">
+                    <!-- Display headline and limited note content -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="mb-2" th:text="${note.headline}"></h5>
+                            <hr>
+                            <p class="text-muted"
+                               th:text="${note.note.length() > 40 ? #strings.substring(note.note, 0, 40) + '...' : note.note}"></p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group mr-auto" role="group">
+                                <a class="btn btn-outline-primary" th:href="@{/viewNote/{id}(id=${note.id})}">
+                                    <i class="fas fa-eye"></i> View Note
+                                </a>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-outline-primary" th:href="@{/noteInfo/{id}(id=${note.id})}">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a class="btn btn-outline-primary" th:href="@{/editNote/{id}(id=${note.id})}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-outline-primary" th:href="@{/deleteNote/{id}(id=${note.id})}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" th:if="${notes == null or notes.size() == 0}">
+                <p>No notes found for this user.</p>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

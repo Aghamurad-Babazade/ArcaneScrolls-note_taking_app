@@ -1,0 +1,12 @@
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/ArcaneScrolls.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/config/EncryptionUtil.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/config/SecurityConfig.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/controller/AuthController.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/controller/CrudController.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/controller/FeaturesController.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/model/Note.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/model/User.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/repository/NoteRepository.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/repository/UserRepository.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/service/NoteService.java
+/Users/aghamuradbabazade/Desktop/ArcaneScrolls-note_taking_app/src/main/java/com/ArcaneScrolls/service/UserService.java

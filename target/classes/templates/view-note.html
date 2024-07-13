@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>View Note - ArcaneScrolls</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(white, lightblue) no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .card-header {
+            background-color: #6a1b9a; /* Deep Purple */
+            color: #ffffff;
+            border-bottom: none;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .note-content {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #333333;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .btn-outline-secondary {
+            color: white;
+            border-color: white;
+        }
+
+        .btn-outline-secondary:hover {
+            color: #6a1b9a;
+            background-color: white;
+            border-color: gray;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h1 class="card-title">Note Information</h1>
+            <div>
+                <form method="post" th:action="@{/logout}">
+
+                    <a class="btn btn-outline-secondary mr-2" th:href="@{/notes}">
+                        <i class="fas fa-arrow-left"></i> Back to Notes
+                    </a>
+
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-sign-out-alt"></i> Sign Out
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="note-content">
+
+                <p th:text="${note.headline}">Note headline will be displayed here</p>
+                <hr>
+                <p th:text="${note.note}">Note content will be displayed here</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+<!-- Script for signing out -->
+<script>
+    function signOut() {
+        // Perform sign out actions here (e.g., redirect to sign out URL)
+        alert('Signing out...');
+        // Example redirect (replace with your actual sign out logic)
+        window.location.href = '/logout'; // Replace with your sign out URL or action
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+com/ArcaneScrolls/service/NoteService.class
+com/ArcaneScrolls/repository/NoteRepository.class
+com/ArcaneScrolls/model/User.class
+com/ArcaneScrolls/controller/FeaturesController.class
+com/ArcaneScrolls/controller/CrudController.class
+com/ArcaneScrolls/service/UserService.class
+com/ArcaneScrolls/repository/UserRepository.class
+com/ArcaneScrolls/ArcaneScrolls.class
+com/ArcaneScrolls/config/EncryptionUtil.class
+com/ArcaneScrolls/controller/AuthController.class
+com/ArcaneScrolls/model/Note.class
+com/ArcaneScrolls/config/SecurityConfig.class
