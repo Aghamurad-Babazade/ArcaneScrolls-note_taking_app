@@ -33,7 +33,7 @@ public class FeaturesController {
             return "redirect:/login";
         }
 
-        Optional<Note> noteOptional = Optional.ofNullable(noteService.getNoteById(id));
+        Optional<Note> noteOptional = Optional.ofNullable(noteService.getNoteById(id, session));
 
         if (noteOptional.isPresent()) {
             Note note = noteOptional.get();
@@ -50,7 +50,7 @@ public class FeaturesController {
         if (authenticatedUser == null) {
             return "redirect:/login";
         }
-        Optional<Note> noteOptional = Optional.ofNullable(noteService.getNoteById(id));
+        Optional<Note> noteOptional = Optional.ofNullable(noteService.getNoteById(id, session));
         if (noteOptional.isPresent()) {
             Note note = noteOptional.get();
             model.addAttribute("note", note);
@@ -67,7 +67,7 @@ public class FeaturesController {
             return "redirect:/login";
         }
 
-        List<Note> notes = noteService.searchNotes(authenticatedUser, keyword);
+        List<Note> notes = noteService.searchNotes(authenticatedUser, keyword, session);
 
         model.addAttribute("notes", notes);
         model.addAttribute("username", authenticatedUser.getUsername());

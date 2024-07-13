@@ -1,6 +1,5 @@
 package com.ArcaneScrolls.service;
 
-import com.ArcaneScrolls.config.EncryptionUtil;
 import com.ArcaneScrolls.model.User;
 import com.ArcaneScrolls.repository.NoteRepository;
 import com.ArcaneScrolls.repository.UserRepository;
@@ -8,7 +7,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.SecretKey;
 import java.util.Optional;
 
 @Service
@@ -26,18 +24,13 @@ public class UserService {
 
     }
 
-    public void save(String username, String password, String email) throws Exception {
+    public void save(String username, String password, String email) {
 
         User user = new User();
 
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
         user.setEmail(email);
-
-        SecretKey encryptionKey = EncryptionUtil.generateEncryptionKey();
-        byte[] encryptedEncryptionKey = EncryptionUtil.encryptEncryptionKey(encryptionKey, user.getPassword());
-
-        user.setEncryptionKey(encryptedEncryptionKey);
 
         userRepository.save(user);
     }

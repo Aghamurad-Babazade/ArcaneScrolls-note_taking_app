@@ -28,12 +28,13 @@ public class CrudController {
 
     @GetMapping("/notes")
     public String showNotesPage(Model model, HttpSession session) throws Exception {
+
         User authenticatedUser = (User) session.getAttribute("user");
         if (authenticatedUser == null) {
             return "redirect:/login";
         }
 
-        List<Note> notes = noteService.getAllNotes(authenticatedUser);
+        List<Note> notes = noteService.getAllNotes(authenticatedUser, session);
 
         model.addAttribute("notes", notes);
         model.addAttribute("username", authenticatedUser.getUsername());
@@ -55,7 +56,7 @@ public class CrudController {
     public String addNote(@ModelAttribute("theNote") Note theNote, HttpSession session) throws Exception {
         if (isUserAuthenticated(session)) {
             User authenticatedUser = (User) session.getAttribute("user");
-            noteService.saveNoteForUser(authenticatedUser, theNote);
+            noteService.saveNoteForUser(authenticatedUser, theNote, session);
             return "redirect:/notes";
         } else {
             return "redirect:/login";
@@ -70,7 +71,7 @@ public class CrudController {
             return "redirect:/login";
         }
 
-        Note note = noteService.getNoteById(id);
+        Note note = noteService.getNoteById(id, session);
         model.addAttribute("theNote", note);
         return "edit-note";
     }
@@ -82,7 +83,7 @@ public class CrudController {
             return "redirect:/login";
         }
         theNote.setUser(authenticatedUser);
-        noteService.updateNote(theNote);
+        noteService.updateNote(theNote, session);
         return "redirect:/notes";
     }
 

@@ -29,7 +29,7 @@ public class AuthController {
     }
 
     @PostMapping("/registration")
-    public String registration(@RequestParam String username, @RequestParam String password, @RequestParam String email) throws Exception {
+    public String registration(@RequestParam String username, @RequestParam String password, @RequestParam String email) {
 
         userService.save(username, password, email);
         return "redirect:/login";
@@ -50,10 +50,12 @@ public class AuthController {
             model.addAttribute("error", "Invalid username or password");
             return "login";
         } else {
+
             session.setAttribute("user", existingUser);
+            session.setAttribute("password", password);
+
             return "redirect:/notes";
         }
     }
-
 
 }
